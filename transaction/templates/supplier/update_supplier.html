@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+{% block tittle %}
+  Update Supplier
+{% endblock tittle %}
+{% block content %}
+        <div class="row">
+        <div class="col-md-12">
+          <div class="container">
+
+            <div style="color:#575757; font-style: bold; font-size: 3rem; border-bottom: 1px solid white;">Create Supplier</div> <br>
+            
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="">Name:</label>
+                    {% render_field form.name class='textinput form-control' pattern='[a-zA-Z\s]{1,50}' title='Error Check Form' %}
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="">Phone No:</label>
+                        {% render_field form.phone class='textinput form-control' maxlength='11' pattern='[0-9]{11}' title='Number Only' %}
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="{{ form.email.id_for_label }}">Email ID:</label>
+                        
+                        {% render_field form.email class='textinput form-control' title='Error Check Form' %}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="">Address:</label>
+                     {% render_field form.address class='textinput form-control' title='Error Check Form' %}
+                </div>
+                <div class="form-group">
+                    <label for="">GSTIN No:</label>                 
+                    {% render_field form.gstn class='textinput form-control' pattern='[A-Z0-9]{15}' title='Gstn Number request' %}
+                </div>
+                <br>
+                <div class="align-middle">
+                    <button type="submit" class="btn btn-success">Change</button>
+                    <button type="reset" class="btn btn-danger" >Reset</button>
+                    <a href="#" class="btn btn-danger"> Delete Supplier </a>                  
+                    <a href="#" class="btn btn-secondary">Cancel</a>
+                </div>
+                
+            </form>
+
+          </div>
+        </div>
+        <br>
+  
+      </div>
+{% endblock content %}
+  
